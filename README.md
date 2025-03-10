@@ -18,7 +18,7 @@ A Short example for parsing blocks and items is below
 ```java
 final CRAssetParser parser = CRDataLib.newParser();
 final CompletableFuture<CRData> future = parser.assetRoot(Path.of("assets", "base"))
-  .threads(4) // threads aren't required but giving a couple will speed up parsing
+  .threads(4) // threads aren't required but allocating a couple can speed up large parses
   .navigate(AssetType.BLOCK, "blocks")
   .navigate(AssetType.ITEM, "items")
   .parse(); // parseNow() can be used to parse on a single thread
