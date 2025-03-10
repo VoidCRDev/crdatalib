@@ -1,0 +1,11 @@
+{
+  "texture": "textures/items/example_item.png",
+  "modelType": "base:item3D",
+  "stackLimit": 999,
+  "toolSpeed": 100,
+  "durability": 1209,
+  "effectiveBreakingTags": [
+    "tool_axe_effective",
+    "tool_pickaxe_effective"
+  ]
+}

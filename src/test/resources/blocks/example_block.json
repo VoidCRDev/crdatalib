@@ -1,0 +1,19 @@
+{
+  "stringId": "base:example_block",
+  "blockStates": {
+    "default": {
+      "modelName": "base:models/blocks/empty.json",
+      "blockEventsId": "base:block_events_example_block",
+      "isOpaque": false,
+      "lightAttenuation": 0,
+      "refractiveIndex": 1,
+      "canRaycastForBreak": false,
+      "canRaycastForPlaceOn": false,
+      "canRaycastForReplace": true,
+      "walkThrough": true,
+      "tags": [
+        "replaceable"
+      ]
+    }
+  }
+}
