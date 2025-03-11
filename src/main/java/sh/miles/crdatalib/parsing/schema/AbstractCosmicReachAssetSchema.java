@@ -3,6 +3,7 @@ package sh.miles.crdatalib.parsing.schema;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.JsonNode;
+import sh.miles.crdatalib.parsing.CRJson;
 
 import java.io.IOException;
 

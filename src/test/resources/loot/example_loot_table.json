@@ -1,0 +1,24 @@
+{
+  "id": "base:example",
+  "options": [
+    [
+      {
+        "id": "base:hazard[default]",
+        "max": "10"
+      }
+    ],
+    {
+      "weight": 2,
+      "stacks": [
+        {
+          "id": "base:lunar_soil[default]",
+          "max": 10
+        },
+        {
+          "id": "base:asphalt[default]",
+          "max": 10
+        }
+      ]
+    }
+  ]
+}

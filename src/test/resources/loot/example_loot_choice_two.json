@@ -1,0 +1,9 @@
+{
+  "weight": 2,
+  "stacks": [
+    {
+      "id": "base:medkit",
+      "max": 1
+    }
+  ]
+}

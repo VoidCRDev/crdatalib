@@ -18,8 +18,8 @@ public class DataItemDeserializerTest extends ParsingTest<DataItem> {
     }
 
     @Override
-    public DataItem getExpected() {
-        return new DataItem(
+    public DataItem[] getExpected() {
+        return new DataItem[]{new DataItem(
                 "base:example_item",
                 new SimpleProperties(Map.of(
                         "texture", "textures/items/example_item.png",
@@ -31,11 +31,11 @@ public class DataItemDeserializerTest extends ParsingTest<DataItem> {
                                 "tool_axe_effective",
                                 "tool_pickaxe_effective"
                         ))
-                ));
+                ))};
     }
 
     @Override
-    public String getResourceLocation() {
-        return "items/example_item.json";
+    public String[] getResourceLocation() {
+        return new String[]{"items/example_item.json"};
     }
 }

@@ -2,6 +2,7 @@ package sh.miles.crdatalib.data;
 
 import sh.miles.crdatalib.data.blocks.DataBlock;
 import sh.miles.crdatalib.data.items.DataItem;
+import sh.miles.crdatalib.data.loot.LootTable;
 import sh.miles.crdatalib.parsing.schema.AssetType;
 
 import java.util.ArrayDeque;
@@ -19,7 +20,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
  * @param blocks all parsed cosmic reach blocks
  * @since 1.0.0
  */
-public record CRData(List<DataItem> items, List<DataBlock> blocks) {
+public record CRData(List<DataItem> items, List<DataBlock> blocks, List<LootTable> lootTables) {
 
     /**
      * Creates a new builder for this CRData
@@ -87,7 +88,8 @@ public record CRData(List<DataItem> items, List<DataBlock> blocks) {
 
             return new CRData(
                     (List<DataItem>) objects.getOrDefault(AssetType.ITEM, new ArrayDeque<>()).stream().toList(),
-                    (List<DataBlock>) objects.getOrDefault(AssetType.BLOCK, new ArrayDeque<>()).stream().toList()
+                    (List<DataBlock>) objects.getOrDefault(AssetType.BLOCK, new ArrayDeque<>()).stream().toList(),
+                    (List<LootTable>) objects.getOrDefault(AssetType.LOOT_TABLE, new ArrayDeque<>()).stream().toList()
             );
         }
     }

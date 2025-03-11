@@ -59,7 +59,7 @@ This API is not currently finished The progress is below
     - [ ] Read
     - [ ] Write
 - [ ] Loot
-    - [ ] Read
+    - [X] Read
     - [ ] Write
 - [ ] Models
     - [ ] Read

@@ -15,8 +15,8 @@ public class SimplePropertiesDeserializerTest extends ParsingTest<SimpleProperti
     }
 
     @Override
-    public SimpleProperties getExpected() {
-        return new SimpleProperties(Map.of(
+    public SimpleProperties[] getExpected() {
+        return new SimpleProperties[]{new SimpleProperties(Map.of(
                 "texture", "textures/items/example_item.png",
                 "modelType", "base:item3D",
                 "stackLimit", 999,
@@ -26,11 +26,11 @@ public class SimplePropertiesDeserializerTest extends ParsingTest<SimpleProperti
                         "tool_axe_effective",
                         "tool_pickaxe_effective"
                 )
-        ));
+        ))};
     }
 
     @Override
-    public String getResourceLocation() {
-        return "generic/example_properties.json";
+    public String[] getResourceLocation() {
+        return new String[]{"generic/example_properties.json"};
     }
 }

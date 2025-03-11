@@ -16,14 +16,19 @@ public abstract class ParsingTest<T> {
         register(module);
         mapper.registerModule(module);
 
-        final T expected = getExpected();
-        final T actual = assertDoesNotThrow(() -> TestUtil.jsonResource(getResourceLocation(), (Class<T>) expected.getClass(), mapper));
-        assertEquals(expected, actual);
+        final T[] expected = getExpected();
+        final String[] resources = getResourceLocation();
+        final Object[] actual = new Object[expected.length];
+        for (int i = 0; i < expected.length; i++) {
+            final int finalI = i;
+            actual[i] = assertDoesNotThrow(() -> TestUtil.jsonResource(resources[finalI], (Class<T>) expected[finalI].getClass(), mapper));
+            assertEquals(expected[i], actual[i]);
+        }
     }
 
     public abstract void register(SimpleModule module);
 
-    public abstract T getExpected();
+    public abstract T[] getExpected();
 
-    public abstract String getResourceLocation();
+    public abstract String[] getResourceLocation();
 }

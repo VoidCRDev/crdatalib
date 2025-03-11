@@ -17,8 +17,8 @@ public class DataBlockDeserializerTest extends ParsingTest<DataBlock> {
     }
 
     @Override
-    public DataBlock getExpected() {
-        return new DataBlock(
+    public DataBlock[] getExpected() {
+        return new DataBlock[]{new DataBlock(
                 "base:example_block",
                 new SimpleProperties(Map.of()),
                 Map.of("default", new SimpleProperties(Map.of(
@@ -33,11 +33,11 @@ public class DataBlockDeserializerTest extends ParsingTest<DataBlock> {
                         "walkThrough", true,
                         "tags", List.of("replaceable")
                 )))
-        );
+        )};
     }
 
     @Override
-    public String getResourceLocation() {
-        return "blocks/example_block.json";
+    public String[] getResourceLocation() {
+        return new String[]{"blocks/example_block.json"};
     }
 }

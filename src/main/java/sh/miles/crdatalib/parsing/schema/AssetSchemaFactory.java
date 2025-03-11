@@ -2,6 +2,7 @@ package sh.miles.crdatalib.parsing.schema;
 
 import sh.miles.crdatalib.parsing.schema.base.BlockAssetSchema;
 import sh.miles.crdatalib.parsing.schema.base.ItemAssetSchema;
+import sh.miles.crdatalib.parsing.schema.base.LootTableAssetSchema;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,10 @@ public final class AssetSchemaFactory {
             return (AssetSchema<T>) tmp;
         } else if (type.equals(AssetType.BLOCK)) {
             tmp = new BlockAssetSchema();
+            this.cache.put(type, schema);
+            return (AssetSchema<T>) tmp;
+        } else if (type.equals(AssetType.LOOT_TABLE)) {
+            tmp = new LootTableAssetSchema();
             this.cache.put(type, schema);
             return (AssetSchema<T>) tmp;
         }

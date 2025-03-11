@@ -2,6 +2,7 @@ package sh.miles.crdatalib.parsing.schema;
 
 import sh.miles.crdatalib.data.blocks.DataBlock;
 import sh.miles.crdatalib.data.items.DataItem;
+import sh.miles.crdatalib.data.loot.LootTable;
 
 import java.util.Objects;
 
@@ -13,8 +14,9 @@ import java.util.Objects;
  */
 public final class AssetType<O> {
 
-    public static final AssetType<DataItem> ITEM = new AssetType<>(DataItem.class);
     public static final AssetType<DataBlock> BLOCK = new AssetType<>(DataBlock.class);
+    public static final AssetType<DataItem> ITEM = new AssetType<>(DataItem.class);
+    public static final AssetType<LootTable> LOOT_TABLE = new AssetType<>(LootTable.class);
 
     public final Class<O> outputType;
 
