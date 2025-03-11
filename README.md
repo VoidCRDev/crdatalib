@@ -9,6 +9,35 @@ The goal of this API is to provide utilities to easily parse cosmic reach assets
 This API can be used to write new Cosmic Reach asset files or also just read and act on the
 current assets like making API generation.
 
+## Depend
+
+### Maven
+
+```xml
+<repository>
+  <id>miles-repos-snapshots</id>
+  <name>Miles Repositories</name>
+  <url>https://maven.miles.sh/snapshots</url>
+</repository>
+
+<dependency>
+  <groupId>sh.miles.crdatalib</groupId>
+  <artifactId>crdatalib</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+### Gradle Kotlin
+
+```kotlin
+maven {
+    name = "milesReposSnapshots"
+    url = uri("https://maven.miles.sh/snapshots")
+}
+
+implementation("sh.miles.crdatalib:crdatalib:1.0.0-SNAPSHOT")
+```
+
 ## Usage
 
 Using crdatalib is very easy and everything that is needed can be accessed through the CRDataLib class.

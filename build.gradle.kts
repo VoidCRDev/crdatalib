@@ -26,6 +26,14 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.publish {
+    dependsOn(tasks.test)
+}
+
+tasks.build {
+    dependsOn(tasks.test)
+}
+
 publishing {
     repositories {
         maven("https://maven.miles.sh/snapshots") {
