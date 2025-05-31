@@ -11,7 +11,7 @@ public class ActiveTester {
             final long start = System.currentTimeMillis();
             CRDataLib.newParser()
                     .assetRoot(Path.of("assets", "base"))
-                    .threads(2)
+                    .threads(0)
                     .navigate(AssetType.BLOCK, "blocks")
                     .navigate(AssetType.ITEM, "items")
                     .navigate(AssetType.LOOT_TABLE, "loot")

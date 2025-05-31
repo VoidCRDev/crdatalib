@@ -76,6 +76,18 @@ public record CRData(List<DataItem> items, List<DataBlock> blocks, List<LootTabl
         }
 
         /**
+         * Adds all of a asset type
+         *
+         * @param type  the type of assets being added
+         * @param value the list of asset value
+         * @since 1.1.0
+         */
+        public void addAll(AssetType<?> type, List<Object> value) {
+            final Queue<Object> values = (Queue<Object>) objects.computeIfAbsent(type, (k) -> concurrent ? new ConcurrentLinkedDeque<>() : new ArrayDeque<>());
+            values.addAll(value);
+        }
+
+        /**
          * Builds a {@link CRData}
          *
          * @return the cr data

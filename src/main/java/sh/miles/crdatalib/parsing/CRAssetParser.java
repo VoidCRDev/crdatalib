@@ -121,22 +121,12 @@ public final class CRAssetParser {
     private CRData parseSingle() {
         final CRData.Builder builder = CRData.builder();
         for (final Map.Entry<AssetType<?>, String> entry : this.navigate.entrySet()) {
-            try {
-                final var assetType = entry.getKey();
-                final var schema = this.schemaFactory.from(assetType);
-                final var subfolder = this.root.resolve(entry.getValue());
-                try (Stream<Path> files = Files.list(subfolder)) {
-                    files.forEach((path) -> {
-                        final byte[] bytes = CRDataLibUtils.readBytesOrThrow(path);
-                        final SchemaInput input = SchemaInput.of(assetType, bytes);
-                        if (schema.validate(input)) {
-                            builder.add(assetType, schema.parse(input));
-                        }
-                    });
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            final var assetType = entry.getKey();
+            final var schema = this.schemaFactory.from(assetType);
+            final var subfolder = this.root.resolve(entry.getValue());
+            final var inputs = SchemaInput.fold(assetType, subfolder, 2)
+                    .stream().filter(schema::validate).map((input) -> (Object) schema.parse(input)).toList();
+            builder.addAll(assetType, inputs);
         }
 
         return builder.build();

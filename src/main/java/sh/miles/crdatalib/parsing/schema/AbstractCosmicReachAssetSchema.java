@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public abstract class AbstractCosmicReachAssetSchema<T> implements AssetSchema<T> {
 
-    public static final String DEFAULT_SCHEMA_VERSION = "0.3.27";
+    public static final String DEFAULT_SCHEMA_VERSION = "0.4.7";
 
     @Override
     public T parse(final SchemaInput input) {
