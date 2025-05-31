@@ -71,40 +71,19 @@ public final class SchemaInput {
      */
     public static List<SchemaInput> fold(AssetType<?> assetType, final Path folder, int depthTolerance) throws IllegalStateException {
         final List<SchemaInput> inputs = new ArrayList<>();
-        try {
-            int depth = 0;
-            final Queue<Folder> children = new ArrayDeque<>();
-            children.add(new Folder(folder, depth));
-            while (!children.isEmpty()) {
-                final Folder next = children.poll();
-                if (next.depth >= depthTolerance) {
-                    throw new IllegalStateException("Folder " + next.path + " has hit the depth tolerance of " + depthTolerance);
+        try (final Stream<Path> subs = Files.walk(folder)) {
+            subs.forEach((sub) -> {
+                if (Files.isDirectory(sub)) {
+                    return;
                 }
 
-                final int finalDepth = depth;
-                try (final Stream<Path> subs = Files.walk(next.path)) {
-                    subs.forEach((sub) -> {
-                        if (sub.equals(next.path)) return;
-                        if (Files.isDirectory(sub)) {
-                            children.add(new Folder(sub, finalDepth + 1));
-                            return;
-                        }
-
-                        final byte[] bytes = CRDataLibUtils.readBytesOrThrow(sub);
-                        final SchemaInput input = SchemaInput.of(assetType, bytes);
-                        inputs.add(input);
-                    });
-                }
-
-                depth++;
-            }
+                final byte[] bytes = CRDataLibUtils.readBytesOrThrow(sub);
+                final SchemaInput input = SchemaInput.of(assetType, bytes);
+                inputs.add(input);
+            });
         } catch (IOException e) {
-
+            throw new RuntimeException(e);
         }
-
         return inputs;
-    }
-
-    private record Folder(Path path, int depth) {
     }
 }
